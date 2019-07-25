@@ -64,7 +64,7 @@ const ChannelPopoutRemoveHTML = function removeHTML(){
     document.getElementsByName("ChannelPopout")[0].parentNode.remove();
 }
 
-var Multipane = () => {
+var Multipane = (() => {
   const config = {
     "info":{
       "name":"Multipane",
@@ -105,7 +105,7 @@ var Multipane = () => {
               }
           }
       };
-}
+})();
 /*var ChannelPopouts = (() => {
     const config = {"info":{"name":"ChannelPopouts","authors":[{"name":"Green","discord_id":"80593258903773184","github_username":"Curtis-D"}],"version":"1.1.4","description":"Allows you to popout DMs/Servers to view more than one DM/Server at a time.","github":"","github_raw":"https://raw.githubusercontent.com/Curtis-D/ChannelPopouts/master/ChannelPopouts.plugin.js"},"main":"index.js"};
 
