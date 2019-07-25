@@ -1,1 +1,1 @@
-META{"name":"ChannelPopouts","displayName":"ChannelPopouts","website":"https://github.com/Curtis-D","source":"https://github.com/Curtis-D/ChannelPopouts/blob/master/ChannelPopouts.plugin.js"}
+//META{"name":"Multipane","displayName":"Multipane","website":"https://github.com/ptlthg","source":"https://github.com/ptlthg/discord-multipane/blob/master/multipane.plugin.js"}
