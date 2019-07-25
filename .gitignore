@@ -3,6 +3,7 @@
 config.json
 log.txt
 package-lock.json
+ExamplePlugin.plugin.js
 .gitignore
 
 # Node_modules #
