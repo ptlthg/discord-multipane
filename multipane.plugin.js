@@ -79,7 +79,12 @@ var Multipane = (() => {
       "github_raw":"https://raw.githubusercontent.com/ptlthg/discord-multipane/master/multipane.plugin.js"},
       "main":"index.js"};
 
-      return class ChannelPopouts extends Plugin {
+      return class Multipane {
+          getName() {return "Multipane";}
+          getVersion() {return "1.0.0";}
+          getAuthor() {return "Kaeso";}
+          getDescription() {return "Enables multiple panes consistng of channels or DMs to be open at once";}
+          
           constructor() {
               super();
           }
