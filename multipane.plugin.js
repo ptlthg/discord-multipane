@@ -1,4 +1,4 @@
-//META{"name":"Multipane","displayName":"Multipane","website":"https://github.com/ptlthg","source":"https://github.com/ptlthg/discord-multipane/blob/master/multipane.plugin.js"}
+//META{"name":"Multipane","displayName":"Multipane","website":"https://github.com/ptlthg","source":"https://github.com/ptlthg/discord-multipane/blob/master/multipane.plugin.js"}*//
 
 function ChannelPopoutOnMouseEnter(){
     let wrapper = document.createElement('div');
