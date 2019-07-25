@@ -78,6 +78,33 @@ var Multipane = () => {
       "github":"",
       "github_raw":"https://raw.githubusercontent.com/ptlthg/discord-multipane/master/multipane.plugin.js"},
       "main":"index.js"};
+
+      return class ChannelPopouts extends Plugin {
+          constructor() {
+              super();
+          }
+
+          onStart() {
+              //Logger.log("Started");
+              //Library.PluginUpdater.checkForUpdate(config.info.name, config.info.version, config.info.github_raw);
+              if(document.getElementsByName("Nova_Pin")[0] && !document.getElementsByName("ChannelPopout")[0]){
+                  ChannelPopoutInjectHTML(document.getElementsByName("Nova_Pin")[0].parentNode);
+              }
+
+          }
+
+          onStop() {
+              ChannelPopoutRemoveHTML();
+              //Logger.log("Stopped");
+          }
+
+          observer(e){
+              if(e.addedNodes[0] && e.addedNodes[0].classList && e.addedNodes[0].getAttribute("name") === "Nova_Pin" && !document.getElementsByName("ChannelPopout")[0]){
+                  let wrapper = document.createElement('div');
+                  ChannelPopoutInjectHTML(e.addedNodes[0].parentNode);
+              }
+          }
+      };
 }
 /*var ChannelPopouts = (() => {
     const config = {"info":{"name":"ChannelPopouts","authors":[{"name":"Green","discord_id":"80593258903773184","github_username":"Curtis-D"}],"version":"1.1.4","description":"Allows you to popout DMs/Servers to view more than one DM/Server at a time.","github":"","github_raw":"https://raw.githubusercontent.com/Curtis-D/ChannelPopouts/master/ChannelPopouts.plugin.js"},"main":"index.js"};
