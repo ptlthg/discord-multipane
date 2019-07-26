@@ -4,7 +4,7 @@ function MultiPaneOnMouseEnter(){
     let wrapper = document.createElement('div');
     let buttonLeft = parseInt(document.getElementsByName('MultiPane')[0].getBoundingClientRect().left) - 36;
     let buttonTop = parseInt(document.getElementsByName('MultiPane')[0].getBoundingClientRect().top) + 25;
-    wrapper.innerHTML = `<div class='layer-v9HyYc da-layer MultiPaneIcon' style='left: ` + buttonLeft.toString() + `px; top: ` + buttonTop.toString() + `px;'><div class="tooltip-2QfLtc tooltipBottom-3ARrEK tooltipBlack-PPG47z"><div class="tooltipPointer-3ZfirK da-tooltipPointer"></div>Popout Chat</div></div>`;
+    wrapper.innerHTML = `<div class='layer-v9HyYc da-layer MultiPaneIcon' style='left: ` + buttonLeft.toString() + `px; top: ` + buttonTop.toString() + `px;'><div class="tooltip-2QfLtc tooltipBottom-3ARrEK tooltipBlack-PPG47z"><div class="tooltipPointer-3ZfirK da-tooltipPointer"></div>Seperate</div></div>`;
     document.querySelector('.layerContainer-yqaFcK').appendChild(wrapper.firstChild);
 };
 
@@ -25,12 +25,12 @@ const MultiPaneInjectHTML = function injectHTML(icon){
                 <g>
                     <g>
                         <g>
-                            <polygon points="53,56 8,56 8,11 30,11 30,3 0,3 0,64 61,64 61,34 53,34"/>
+                            <polygon points="30,56 8,56 8,11 30,11 25,3 0,3 0,64 25,64"/>
                         </g>
                     </g>
                     <g>
                         <g>
-                            <polygon points="42,0 50,8 33,25 39,31 56,14 64,23 64,0"/>
+                            <polygon points="34,19 26,19 26,29.5 15.5,29.5 15.5,37.5 26,37.5 26,48 34,48 34,37.5 44.5,37.5 44.5,29.5 34,29.5"/>
                         </g>
                     </g>
                 </g>
@@ -56,12 +56,19 @@ class Multipane {
 
     load() {} // Called when the plugin is loaded in to memory
 
-    start() {
+    async start() {
       if(document.getElementsByName("Nova_Pin")[0] && !document.getElementsByName("multipane")[0]){
-          MultiPaneInjectHTML(document.getElementsByName("Nova_Pin")[0].parentNode);
+        MultiPaneInjectHTML(document.getElementsByName("Nova_Pin")[0].parentNode);
       }
     }
-    stop() {} // Called when the plugin is deactivated
+    stop() {
+      MultiPaneRemoveHTML();
+    } // Called when the plugin is deactivated
 
-    observer(changes) {} // Observer for the `document`. Better documentation than I can provide is found here: <https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver>
+    observer(e) {
+      if(e.addedNodes[0] && e.addedNodes[0].classList && e.addedNodes[0].getAttribute("name") === "Nova_Pin" && !document.getElementsByName("MultiPane")[0]){
+        let wrapper = document.createElement('div');
+        MultiPaneInjectHTML(e.addedNodes[0].parentNode);
+      }
+    }
 }
